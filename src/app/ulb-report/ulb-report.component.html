@@ -1,0 +1,114 @@
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row justify-content-center align-items-center custom-header">
+    <h1>ULB  REPORT</h1>
+  </div>
+  <div class="row">
+      <mat-form-field class="col-2">
+        <mat-select [formControl]="agenciesFilter">
+          <mat-option *ngFor="let a of agencies" [value]="a.value">
+            {{a.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-select [formControl]="districtsFilter">
+          <mat-option *ngFor="let d of districts" [value]="d.value">
+            {{d.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-select [formControl]="daysFilter">
+          <mat-option *ngFor="let d of days" [value]="d.value">
+            {{d.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+
+<table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="ulb">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef> ULB 
+      <div>
+      <mat-form-field>
+      <input matInput class="form-field" [formControl]="ulbFilter" placeholder="ULB Filter">
+    </mat-form-field>
+      </div>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.ulb}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="parcels">
+    <th  mat-sort-header mat-header-cell *matHeaderCellDef> Parcels 
+      <div>
+        <mat-form-field>
+          <input matInput class="form-field" [formControl]="parcelsFilter" placeholder="parcel Filter">
+        </mat-form-field>
+      </div>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.parcels}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="buildings">
+    <th  mat-sort-header mat-header-cell *matHeaderCellDef> Buildings 
+      <div>
+        <mat-form-field>
+          <input matInput class="form-field" [formControl]="buildingsFilter" placeholder="Building Filter">
+        </mat-form-field>
+      </div>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.buildings}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="portion">
+    <th  mat-sort-header mat-header-cell *matHeaderCellDef> Portions 
+      <div>
+        <mat-form-field>
+          <input matInput class="form-field" [formControl]="portionFilter" placeholder="Portion Filter">
+        </mat-form-field>
+      </div>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.portion}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="agent">
+    <th  mat-sort-header mat-header-cell *matHeaderCellDef> Agents 
+      <div>
+        <mat-form-field>
+          <input matInput class="form-field" [formControl]="agentFilter" placeholder="Agent Filter">
+        </mat-form-field>
+      </div>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.agent}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

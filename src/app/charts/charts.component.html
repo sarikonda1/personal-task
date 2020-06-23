@@ -1,0 +1,47 @@
+<div class="container ">
+  <div class="mw-100 row">
+    <div class="w-50 p-3" >
+    <h1 class="custom-header">
+      Real-Time Activity
+    </h1>
+    <ng-container *ngFor="let item of realTimeActivity">
+      <div class="row custom-padding">
+          {{item?.product}} created by  <u> {{item?.person}} </u>  ({{diff_hours(item?.date)}} Hours)
+      </div>
+    </ng-container>
+    </div>
+
+  <div class="w-50 p-3" >
+    <h1 class="custom-header">
+     TimeLine
+    </h1>
+    <div class="row">
+      <mat-form-field class="col-3">
+        <mat-select [formControl]="agenciesFilter">
+          <mat-option *ngFor="let a of agencies" [value]="a.value">
+            {{a.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-3">
+        <mat-select [formControl]="districtsFilter">
+          <mat-option *ngFor="let d of districts" [value]="d.value">
+            {{d.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-3">
+        <mat-select [formControl]="daysFilter">
+          <mat-option *ngFor="let d of days" [value]="d.value">
+            {{d.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+  <div id="chart-container">
+    <canvas #myCanvas id="canvas" baseChart [chartType]="chartType" [datasets]="chartData" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"></canvas>
+  </div>
+  
+  </div>
+  </div>
+</div>
